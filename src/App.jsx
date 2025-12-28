@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Gift, Music, Star, Heart, Cake } from 'lucide-react';
-import './index.css';
-// --- Confetti Component ---
+import { ChevronLeft, ChevronRight, Gift, Music, Star, Heart, Cake, User, Quote, Sparkles } from 'lucide-react';
+
+// --- Confetti Component (Unchanged) ---
 const Confetti = ({ isActive }) => {
     const canvasRef = useRef(null);
 
@@ -36,7 +36,6 @@ const Confetti = ({ isActive }) => {
             };
         };
 
-        // Initialize particles
         for (let i = 0; i < 150; i++) {
             particles.push(createParticle());
         }
@@ -58,7 +57,7 @@ const Confetti = ({ isActive }) => {
 
                 if (p.y > canvas.height) {
                     particles[index] = createParticle();
-                    particles[index].y = -20; // Reset to top
+                    particles[index].y = -20;
                 }
             });
 
@@ -89,42 +88,26 @@ export default function App() {
     const [isAutoPlaying, setIsAutoPlaying] = useState(false);
 
     const slides = [
+        // Slide 1: Credits
         {
             id: 1,
-            bg: "bg-indigo-900",
+            bg: "bg-slate-900",
             content: (
                 <div className="text-center animate-fade-in-up">
                     <div className="mb-6 flex justify-center">
-                        <Star className="w-24 h-24 text-yellow-400 animate-pulse" />
+                        <User className="w-24 h-24 text-blue-400 animate-pulse" />
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                        Hey, Guess What?
+                    <p className="text-xl text-blue-200 uppercase tracking-widest mb-4">Presented By</p>
+                    <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
+                        Soban Zaib Warraich
                     </h1>
-                    <p className="text-xl md:text-2xl text-indigo-200">
-                        Something special is happening today...
-                    </p>
+                    <div className="w-24 h-1 bg-blue-500 mx-auto mt-8 rounded-full"></div>
                 </div>
             )
         },
+        // Slide 2: Main Birthday Title
         {
             id: 2,
-            bg: "bg-purple-900",
-            content: (
-                <div className="text-center animate-fade-in-up">
-                    <div className="mb-6 flex justify-center">
-                        <Gift className="w-24 h-24 text-pink-400 animate-bounce" />
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        It's not just any ordinary day.
-                    </h2>
-                    <p className="text-lg md:text-xl text-purple-200 max-w-lg mx-auto">
-                        The world got a little bit brighter on this date. A legend was born.
-                    </p>
-                </div>
-            )
-        },
-        {
-            id: 3,
             bg: "bg-gradient-to-br from-pink-600 to-orange-500",
             isCelebration: true,
             content: (
@@ -139,47 +122,151 @@ export default function App() {
                         UMER!
                     </h1>
                     <p className="text-white text-xl font-medium bg-white/20 inline-block px-6 py-2 rounded-full backdrop-blur-sm">
-                        🎉 Let the party begin! 🎉
+                        Scroll for messages ➡
                     </p>
                 </div>
             )
         },
+        // Slide 3: Sania
+        {
+            id: 3,
+            bg: "bg-indigo-800",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <Quote className="w-12 h-12 text-indigo-300 mx-auto mb-6 opacity-50" />
+                    <p className="text-2xl md:text-4xl font-bold text-white mb-8 leading-tight">
+                        "Happy birthday umarrr! It’s been 5 yrs gng STAY HAPPY AND BLESSED. I hope you succeed in life."
+                    </p>
+                    <div className="inline-block border-t border-indigo-400 pt-4">
+                        <p className="text-xl text-indigo-200 font-semibold uppercase tracking-wide">~ Sania</p>
+                    </div>
+                </div>
+            )
+        },
+        // Slide 4: Amna
         {
             id: 4,
-            bg: "bg-blue-800",
+            bg: "bg-rose-900",
             content: (
-                <div className="text-center animate-fade-in-up">
-                    <div className="mb-6 flex justify-center">
-                        <Heart className="w-24 h-24 text-red-500 animate-pulse" />
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        My Wish For You
-                    </h2>
-                    <p className="text-lg md:text-2xl text-blue-100 max-w-2xl mx-auto leading-relaxed italic px-4">
-                        "May your year be filled with new adventures, incredible success,
-                        and happiness that never ends. Keep shining, Umer!"
+                <div className="text-center animate-fade-in-up px-4">
+                    <Heart className="w-16 h-16 text-rose-400 mx-auto mb-6 animate-pulse" />
+                    <p className="text-lg md:text-2xl font-medium text-white mb-8 leading-relaxed max-w-3xl mx-auto italic">
+                        "Happy Birthday Umer Mara Yar! You are fascinating and beautiful in your own way. Have a blessed life and a fantastic day. May this year bring you endless moments of joy, growth, and peace. Keep shining with your unique light and never stop being the kind soul you are. You deserve all the happiness the world has to offer. Good luck with your future and your jobs and your coins."
                     </p>
+                    <div className="inline-block border-t border-rose-400 pt-4">
+                        <p className="text-xl text-rose-200 font-semibold uppercase tracking-wide">~ Amna</p>
+                    </div>
                 </div>
             )
         },
+        // Slide 5: Jafar
         {
             id: 5,
-            bg: "bg-emerald-900",
+            bg: "bg-purple-900",
             content: (
-                <div className="text-center animate-fade-in-up">
-                    <div className="mb-6 flex justify-center space-x-4">
-                        <Music className="w-16 h-16 text-emerald-400 animate-spin-slow" />
-                        <Star className="w-16 h-16 text-yellow-400 animate-spin-slow" style={{ animationDelay: '0.5s'}} />
+                <div className="text-center animate-fade-in-up px-4">
+                    <Star className="w-16 h-16 text-yellow-400 mx-auto mb-6 animate-spin-slow" />
+                    <p className="text-lg md:text-2xl font-bold text-white mb-6 uppercase tracking-wide leading-relaxed">
+                        "UMAR, HAPPIEST BIRTHDAY YOURE SUCH A GREAT PERSON AND A FRIEND I LOVE YOU SO SO MUCH AND YOU MEAN ALOT TO ME , YOU DESERVE TO BE HAPPY ,YOU DESERVE EVERYTHING, WHEN WE HAD A MEETUP I HAD THIS ANXIETY THAT YOU’D JUDGE ME, BUT YOU DIDN’T AND YOURE SO COOL KHUSH RHO BACCA I LOVE YOU"
+                    </p>
+                    <div className="inline-block border-t border-purple-400 pt-4">
+                        <p className="text-xl text-purple-200 font-semibold uppercase tracking-wide">~ Jafar</p>
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-                        Have a Blast!
+                </div>
+            )
+        },
+        // Slide 6: Momina
+        {
+            id: 6,
+            bg: "bg-teal-800",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <Sparkles className="w-12 h-12 text-teal-300 mx-auto mb-6" />
+                    <p className="text-2xl md:text-4xl font-light text-white mb-8">
+                        "Happy birthday Umar may you be blessed with infinite happiness and blessings"
+                    </p>
+                    <div className="inline-block border-t border-teal-400 pt-4">
+                        <p className="text-xl text-teal-200 font-semibold uppercase tracking-wide">~ Momina</p>
+                    </div>
+                </div>
+            )
+        },
+        // Slide 7: Wasay
+        {
+            id: 7,
+            bg: "bg-cyan-900",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <div className="mb-6 bg-cyan-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                        <User className="text-cyan-200 w-8 h-8" />
+                    </div>
+                    <p className="text-xl md:text-3xl font-medium text-white mb-8 leading-relaxed">
+                        "Happy birthday umar, I am not sure if I can put it in words but I really care for you and I adore our friendship. Quite hard to find such a genuine friend nowadays, hope tera koi aik business idea comes into being. Have a great day."
+                    </p>
+                    <div className="inline-block border-t border-cyan-400 pt-4">
+                        <p className="text-xl text-cyan-200 font-semibold uppercase tracking-wide">~ Wasay</p>
+                    </div>
+                </div>
+            )
+        },
+        // Slide 8: Tanzeel
+        {
+            id: 8,
+            bg: "bg-blue-900",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <Quote className="w-12 h-12 text-blue-300 mx-auto mb-6 opacity-50" />
+                    <p className="text-xl md:text-3xl font-medium text-white mb-8 leading-relaxed">
+                        "Hey Umar, Happy Birthday bhai. I know you've been working hard and have goals, clear goals in your mind. I hope you achieve them. I hope you figure things out then things get tough. Keep going."
+                    </p>
+                    <div className="inline-block border-t border-blue-400 pt-4">
+                        <p className="text-xl text-blue-200 font-semibold uppercase tracking-wide">~ Tanzeel</p>
+                    </div>
+                </div>
+            )
+        },
+        // Slide 9: Annie
+        {
+            id: 9,
+            bg: "bg-emerald-800",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <Music className="w-16 h-16 text-emerald-300 mx-auto mb-6" />
+                    <p className="text-xl md:text-3xl font-bold text-white mb-8 leading-relaxed font-serif">
+                        "کلیزه دی نیکمرغه داسې دي نور ام نصيب شه سره ده خير او امن. دا هرڅه خو به کيږي زما cake ظالمه نه دي چرس راوستل نه pizza شعبه ملا treat"
+                    </p>
+                    <div className="inline-block border-t border-emerald-400 pt-4">
+                        <p className="text-xl text-emerald-200 font-semibold uppercase tracking-wide">~ Annie</p>
+                    </div>
+                </div>
+            )
+        },
+        // Slide 10: Khadeeja
+        {
+            id: 10,
+            bg: "bg-gray-800",
+            content: (
+                <div className="text-center animate-fade-in-up px-4">
+                    <div className="mb-6 opacity-50">
+                        <User className="w-20 h-20 text-gray-400 mx-auto border-4 border-gray-600 rounded-full p-2" />
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        404 Error: Message Not Found
                     </h2>
-                    <button
-                        onClick={() => setCurrentSlide(0)}
-                        className="px-8 py-4 bg-white text-emerald-900 font-bold rounded-full text-xl hover:bg-emerald-100 transition transform hover:scale-105 shadow-xl"
-                    >
-                        Replay the Magic ↺
-                    </button>
+                    <p className="text-xl md:text-2xl text-gray-400 mb-8 italic">
+                        "Khadeeja ka message add nhi hua wo offline thi..."
+                    </p>
+                    <div className="inline-block border-t border-gray-600 pt-4">
+                        <p className="text-xl text-gray-500 font-semibold uppercase tracking-wide">~ Khadeeja (Currently Offline)</p>
+                    </div>
+                    <div className="mt-12">
+                        <button
+                            onClick={() => setCurrentSlide(1)}
+                            className="px-8 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-200 transition"
+                        >
+                            Start Over ↺
+                        </button>
+                    </div>
                 </div>
             )
         }
@@ -196,12 +283,11 @@ export default function App() {
     useEffect(() => {
         let interval;
         if (isAutoPlaying) {
-            interval = setInterval(nextSlide, 5000);
+            interval = setInterval(nextSlide, 6000); // 6 seconds per slide for reading
         }
         return () => clearInterval(interval);
     }, [isAutoPlaying]);
 
-    // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'ArrowRight') nextSlide();
@@ -213,7 +299,6 @@ export default function App() {
 
     return (
         <div className="relative w-full h-screen overflow-hidden font-sans">
-            {/* Custom Styles for Animations */}
             <style>{`
         @keyframes fade-in-up {
           0% { opacity: 0; transform: translateY(20px); }
@@ -237,37 +322,36 @@ export default function App() {
         .animate-spin-slow { animation: spin-slow 8s linear infinite; }
       `}</style>
 
-            {/* Confetti Layer (Only active on specific slides) */}
+            {/* Confetti (Active on specific slides) */}
             <Confetti isActive={slides[currentSlide].isCelebration} />
 
             {/* Slide Container */}
             <div
                 className={`w-full h-full flex flex-col items-center justify-center transition-colors duration-700 ease-in-out ${slides[currentSlide].bg}`}
             >
-                <div className="w-full max-w-4xl px-6 relative z-10">
+                <div className="w-full max-w-5xl px-6 relative z-10">
                     {slides[currentSlide].content}
                 </div>
             </div>
 
             {/* Navigation Controls */}
-            <div className="absolute bottom-8 left-0 w-full flex justify-center items-center gap-6 z-30">
+            <div className="absolute bottom-8 left-0 w-full flex justify-center items-center gap-4 z-30 px-4">
                 <button
                     onClick={prevSlide}
                     className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition"
-                    aria-label="Previous Slide"
                 >
                     <ChevronLeft size={24} />
                 </button>
 
-                <div className="flex gap-2">
+                {/* Dots Indicator - Hidden on very small screens if too many dots */}
+                <div className="hidden sm:flex gap-2">
                     {slides.map((_, idx) => (
                         <button
                             key={idx}
                             onClick={() => setCurrentSlide(idx)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                currentSlide === idx ? 'bg-white w-8' : 'bg-white/40 hover:bg-white/60'
+                            className={`h-2 rounded-full transition-all duration-300 ${
+                                currentSlide === idx ? 'bg-white w-8' : 'bg-white/40 w-2 hover:bg-white/60'
                             }`}
-                            aria-label={`Go to slide ${idx + 1}`}
                         />
                     ))}
                 </div>
@@ -275,7 +359,6 @@ export default function App() {
                 <button
                     onClick={nextSlide}
                     className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition"
-                    aria-label="Next Slide"
                 >
                     <ChevronRight size={24} />
                 </button>
@@ -285,19 +368,20 @@ export default function App() {
             <div className="absolute top-6 right-6 z-30">
                 <button
                     onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                    className={`px-4 py-2 rounded-full text-sm font-bold backdrop-blur-md transition ${
+                    className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold backdrop-blur-md transition ${
                         isAutoPlaying
                             ? 'bg-green-500/80 text-white'
                             : 'bg-white/10 text-white/70 hover:bg-white/20'
                     }`}
                 >
-                    {isAutoPlaying ? 'Auto-playing ⏸' : 'Play Slides ▶'}
+                    {isAutoPlaying ? '⏸ Auto' : '▶ Play'}
                 </button>
             </div>
 
-            {/* Footer Credit */}
             <div className="absolute bottom-2 w-full text-center z-20">
-                <p className="text-white/30 text-xs">Made for Umer</p>
+                <p className="text-white/30 text-[10px] uppercase tracking-widest">
+                    {currentSlide + 1} / {slides.length}
+                </p>
             </div>
         </div>
     );
