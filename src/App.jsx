@@ -99,7 +99,7 @@ export default function App() {
                     </div>
                     <p className="text-xl text-blue-200 uppercase tracking-widest mb-4">Presented By</p>
                     <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
-                        Soban Zaib Warraich
+                        Soban Zaib Warraich &
                     </h1>
                     <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
                         Khadeeja Masood
